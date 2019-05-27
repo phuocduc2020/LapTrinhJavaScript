@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Demo Event</title>
+</head>
+
+
+<body>
+    <fieldset>
+        <legend>Minh họa Hàm </legend>
+        <button type="button" onclick="Th_Ngay.innerHTML=Lay_Ngay_Hien_hanh()">Xem Ngày Giờ hiện hành</button>
+        <button type="button" onclick="this.innerHTML=Tim_so_lon(15,6)">Tìm số lớn (15,6)</button>
+        <button type="button" onclick="Th_Ngay.innerHTML=Tong">Tổng hai số(15,6)</button>
+        <div id="Th_Ngay">
+
+        </div>
+
+
+    </fieldset>
+</body>
+
+</html>
+<script language="javascript">
+    // Ghi chú một dòng
+
+    /*
+        Ghi chú nhiều dòng
+    */
+
+    function Lay_Ngay_Hien_hanh() {
+        return Date()
+    }
+
+    var a = 15;
+    var b = 6;
+    Th_Ngay.innerHTML = (function(x, y) {
+        var So_lon = Number(x) > Number(y) ? x : y;
+        return So_lon
+    }).call(this, a, b)
+
+
+    var Tinh_Tong = function(a, b) {
+        return Number(a) + Number(b)
+    }
+    var Tong = Tinh_Tong(15, 6)
+/*
+    var add = (function() {
+        var counter = 0;
+        return function() {
+            return counter += 1;
+        }
+    })();
+*/	
+//console.log(add()) // 
+
+
+function outside(x) {
+  function inside(y) {
+    return x + y;
+  }
+  return inside;
+}
+fn_inside = outside(3); 
+result = fn_inside(5); // #=> 8
+result1 = outside(3)(5); // #=> 8
+console.log(result1)
+
+    
+</script>

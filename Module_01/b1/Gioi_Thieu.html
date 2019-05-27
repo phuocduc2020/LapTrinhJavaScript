@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div class="btn btn-outline-primary">
+        Mô Hình - Kỹ Thuật - Công Nghệ 
+        <br>
+        <small>Đơn Giản</small>
+        </div>
+      </div>
+
+      <div class="btn btn-outline-danger btn-block">
+        Khung Thông Báo
+      </div>
+
+      <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+        
+          <legend>Tổng Hai Số</legend>
+        
+          Nhập số hạng 1:<input id="Th_a" size="40" placeholder="Nhập số hạng 1">
+          Nhập số hạng 2:<input id="Th_b" size="40" placeholder="Nhập số hạng 2">
+          <hr>
+          <div id="Th_Tong2so">[Xuất Tổng 2 Số]</div>
+          <button id="Dong_Y" class="btn btn-outline-info">Đồng Ý</button>
+        </fieldset>
+      </div>
+      <hr>
+      <hr>
+      <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+          <legend>Kiểm Tra Chẵn Lẻ</legend>
+          Nhập vào 1 số hạng: <input id="Th_so_hang" size="40" placeholder="Nhập vào 1 số">
+          <hr>
+          <div id="Th_Chan_Le">[Xuất Chãn lẻ]
+          </div>
+          <button id="Th_Dong_Y" class="btn btn-outline-info">Đồng Ý</button>
+
+        </fieldset>
+      </div>
+
+      <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+          <legend>So Sanh 2 So Nhập Vào</legend>
+          Nhập số 1: <input id="SS_1" size="40" placeholder="Nhập số hạng 1">
+          Nhập số 2: <input id="SS_2" size="40" placeholder="Nhập số hạng 2">
+          <hr>
+          <div id="Th_SS">[Xuat So Sánh]</div>
+          <button id="SS_Dong_Y" class="btn btn-outline-info">Đồng Ý</button>
+        </fieldset>
+      </div>
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script>
+    
+        SS_Dong_Y.onclick=()=>{
+          //Nhap
+          var so_a=Number(SS_1.value);
+          var so_b=Number(SS_2.value);
+          //Xuat
+          if(so_a > so_b)
+          {
+            Th_SS.innerHTML=`so lon 1 la ${so_a}`
+          }
+          else
+          {
+            Th_SS.innerHTML=`so lon 1 la ${so_b}`
+          }
+        }
+
+        //Nhap
+        Dong_Y.onclick=()=>{
+          var so_a=Number(Th_a.value);
+          var so_b=Number(Th_b.value);
+          var Tong= so_a + so_b;
+          //xuat
+          Th_Tong2so.innerHTML=`Tong 2 so la ${Tong}`;
+        }
+
+        Th_Dong_Y.onclick=()=>{
+          //Nhap
+          var ktso=Number(Th_so_hang.value);
+          //Xuat
+          if(ktso%2==0)
+          {
+            Th_Chan_Le.innerHTML=`Chan~`;
+          }
+          else
+          {
+            Th_Chan_Le.innerHTML=`le`;
+          }
+        }
+      </script>
+  </body>
+</html>

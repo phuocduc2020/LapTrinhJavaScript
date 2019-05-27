@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đọc Cửa hàng</title>
+   
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="btn btn-outline-info btn-block">
+            <h1>Cua Hang</h1>
+        </div>
+    </div>
+   
+        <br>
+        Ma so: <div id="Th_Ma_so"></div>
+        Ten:<div id="Th_Ten"></div>
+        Dia Chi:<div id="Th_Dia_chi"></div>
+        Dien Thoai:<div id="Th_Dien_Thoai"></div>
+        Email:<div id="Th_Email"></div>
+    </div>
+    <div> <button class="btn" id="Th_Dong_y">Dong Y</button>
+    <script src="../Xu_ly/Xu_ly_3L.js"></script>
+    <script>
+        Th_Dong_y.onclick=()=>{
+            var chuoi_json=Doc_Du_Lieu_Json()
+            var obj = JSON.parse(chuoi_json);
+    
+            console.log(obj);
+            obj.Email
+            console.log(obj.Email)
+            obj.Ten
+            console.log(obj.Ten)
+        }
+    </script>
+</body>
+
+</html>

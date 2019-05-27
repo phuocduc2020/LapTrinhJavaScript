@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Tach Chuoi 2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <img src="../Media/PET.png" alt="btn">
+        <div class="btn btn-outline-info">
+            <h1>Lập Trình Javascript</h1>
+        </div>
+    </div>
+    <div class="btn btn-outline-danger btn-block" id="Th_Thong_Bao">
+        Khung Thong Báo
+    </div>
+    <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+            <legend>Tách Chuỗi 2</legend>
+            Nhập Họ ten: <input type="text" id="Th_Ho_Ten" size="40" placeholder="Nhập họ tên...">
+            <button id="Th_Dong_y" class="btn btn-outline-danger">Đồng Ý</button>
+            <hr>
+            <div id="Th_ho">[Xuat Ho]</div>
+            <div id="Th_ho_lot">[Xuat Ho Lot]</div>
+            <div id="Th_ten">[Xuat Ten]</div>
+
+        </fieldset>
+    </div>
+    <script>
+        Th_Dong_y.onclick=()=>{
+            var Ho_Ten=Th_Ho_Ten.value.trim()
+
+            var hop_le=Ho_Ten != ""
+            if(hop_le)
+            {
+                Th_Thong_Bao.innerHTML=`hop le`;
+                var Ho_Ten_CH = Chuan_Hoa(Ho_Ten)
+                var vi_tri_dau=Ho_Ten_CH.indexOf(" ")
+                var Chuoi_Ho=Ho_Ten_CH.substr(0,vi_tri_dau).trim()
+                var vi_tri_cuoi=Ho_Ten_CH.lastIndexOf(" ")
+                var Chuoi_Ten=Ho_Ten_CH.substr(vi_tri_cuoi).trim()
+                var Chuoi_Ho_Lot=Ho_Ten_CH.substr(vi_tri_dau,Ho_Ten_CH.length-(Chuoi_Ho.length + Chuoi_Ten.length));
+                Th_ho.innerHTML=`Ho: ${Chuoi_Ho}`
+                Th_ho_lot.innerHTML=Chuoi_Ho_Lot!= `` ? `Ho Lot: ${Chuoi_Ho_Lot}` : ``;
+                Th_ten.innerHTML=`Ten: ${Chuoi_Ten}` 
+            }
+            else
+            {
+                Th_Thong_Bao.innerHTML=`khong hop le`;
+                Th_Ho_Ten.focus();
+            }
+
+        }
+        function Chuan_Hoa(chuoi)
+        {
+            var chuoi_tam=chuoi.trim();
+            do{
+                chuoi_tam=chuoi_tam.replace("  "," ")
+                var vt= chuoi_tam.indexOf("  ")
+            }while(vt >=0)
+            return chuoi_tam
+        }
+        var chuoi="a  b  c   d"
+        console.log(chuoi.length)
+        chuoi=Chuan_Hoa(chuoi)
+        console.log(chuoi.length)
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

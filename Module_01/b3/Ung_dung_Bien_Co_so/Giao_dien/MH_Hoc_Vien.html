@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hoc Vien</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="btn btn-outline-primary btn-block">
+            Học lập trình JavaScript
+        </div>
+    </div>
+    <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+            <legend>Học Viên</legend>
+            <!-- "Ma_so":1,
+    "Ten":"Nguyen Phuoc Duc",
+    "Lop":"Javascript",
+    "Phai": true,
+    "diem":[4,5,6]-->
+            <div id="Th_Ma_so"></div>
+            <div id="Th_Ten"></div>
+            <div id="Th_Lop"></div>
+            <div id="Th_Phai"></div>
+            <div id="Th_Diem"></div>
+            <hr>
+            <button id="Th_Dong_y" class="btn btn-outline-info">Đồng Ý</button>
+        </fieldset>
+    </div>
+    <script>
+        Th_Dong_y.onclick=()=>
+        {
+            var json= DL_HocVien_Json();
+            var obj=JSON.parse(json);
+            Th_Ma_so.innerHTML=`Mã số Học Viên: ${obj.Ma_so}`;
+            Th_Ten.innerHTML=`Tên: ${obj.Ten}`;
+            Th_Lop.innerHTML=`Lớp: ${obj.Lop}`;
+            Th_Phai.innerHTML=`Giới Tính: ${obj.Phai == true ? `Nam` : `Nu`}`;
+            Th_Diem.innerHTML=`Điểm: ${(obj.diem[0]+obj.diem[1]+obj.diem[2])/3}`
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../Xu_ly/Xu_ly_3L.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
