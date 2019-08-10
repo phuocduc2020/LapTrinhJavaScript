@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+        <div class="form m-3 p-3">
+                <!--Nhom dien Thoai-->
+            
+               
+            
+              
+            
+            
+            
+                <div class="form-group">
+                    <label for="Th_Nhom_dien_thoai">Nhom Dien Thoai</label>
+                    <select id="Th_Nhom_dien_thoai" onchange="Lay_ma_so()">
+                        <option value="Iphone">IPHONE</option>
+                        <option value="Adroid">Android</option>
+                    </select>
+                </div>
+            
+            
+            
+            
+            
+                <!--Ma so dien thoai-->
+                <div class="form-group">
+                    <label for="Th_Ma_so_DT">Ma so dien thoai</label>
+                    <input class="form-control" type="text" id="Th_Ma_so_DT" readonly>
+                </div>
+            
+            
+                
+                <!--Ten dien thoai-->
+                <div class="form-group">
+                    <label for="Th_Ten">Ten Dien Thoai</label>
+                    <input class="form-control" id="Th_Ten" placeholder="Nhap ten dien thoai" type="text"></input>
+                </div>
+            
+                <!--don gia nhap-->
+                <div class="form-group">
+                    <label for="Th_Don_gia_nhap">Don Gia Nhap</label>
+                    <input type="text" class="form-control" id="Th_Don_gia_nhap" placeholder="Nhap don gia nhap">
+                </div>
+                <!--Don Gia ban-->
+                <div class="form-group">
+                    <label for="Th_don_gia_ban">Don Gia Ban</label>
+                    <input type="text" id="Th_don_gia_ban" class="form-control" placeholder="Nhap don gia ban">
+                </div>
+            
+                <!--lay file hinh-->
+                <div class="form-group">
+                    <label for="file_hinh">Chon Hinh</label>
+                    <input type="file" onchange="Xem_truoc_media()" accept="image/png"/>
+                    <img id="Th_hinh_xem_truoc" style="width:10rem"/>
+                </div>
+            </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

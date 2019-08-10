@@ -1,0 +1,1 @@
+﻿install idb trong terminal by npm i idb@2.1.3 --s cài version idb2.1.3

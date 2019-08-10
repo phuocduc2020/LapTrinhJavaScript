@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ứng dụng Biến Danh sách</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container-fluid" id="Th_Cua_hang"></div>
+
+    <div class="container-fluid">
+        <div class="btn btn-outline-danger btn-block">
+            KHUNG THÔNG BÁO
+        </div>
+    </div>
+    <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+            <legend>KHUNG XỬ LÝ</legend>
+
+        </fieldset>
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../Xu_ly/Xu_ly_3L.js"></script>
+    <script>
+        var Cua_hang = Doc_Cua_hang();
+        Xuat_Thong_tin_Cua_hang(Cua_hang, Th_Cua_hang)
+
+        // Khai báo biến danh sách
+        //var Danh_sach = new Array(1, 2, 3, 2, 2, 4, 5)
+        var Danh_sach = [1, 2, 3, 2, 2, 4, 5]
+        console.log(typeof(Danh_sach))
+        var ds=Danh_sach;
+        ds[0]=150;
+        
+        console.log(Danh_sach)
+        console.log(`-------------------------------------`)
+        console.log(ds)
+        
+        //var Danh_sach_Chuoi=new Array("Tuấn","Thành","Phương","Mai","Tú")
+        var Danh_sach_Chuoi=["Tuấn","Thành","Phương","Mai","Tú"]
+        console.log(Danh_sach_Chuoi)
+        // Thêm
+        
+        console.log(`-------them-------`)
+        Danh_sach.push(1)
+        
+        Danh_sach[Danh_sach.length-1] = 10 // Gán phần tử cuối có giá trị là 10
+        
+        console.log(`---------------Sau khi Thêm ---------------------`)
+        console.log(Danh_sach)
+        // Xóa Phần tử cuối
+        
+        Danh_sach.pop()
+        console.log(`---------------Sau khi Xóa Phần tử Cuối ---------------------`)
+        console.log(Danh_sach)
+        
+        // Xóa Phần tử Đầu
+        
+        Danh_sach.shift()
+        console.log(`---------------Sau khi Xóa Phần tử Đầu ---------------------`)
+        console.log(Danh_sach)
+        
+        // Số Phần tử 
+        var ds=[]
+        console.log(ds.length) // 0
+        
+
+        
+        var So_Phan_tu = Danh_sach.length
+        console.log(`---------------Số Phần tử ---------------------`)
+        console.log(So_Phan_tu);
+                
+        // Tìm
+        
+        var gtTim = 2
+        var Kq = Danh_sach.indexOf(gtTim)
+        console.log(`-------Lưu ý: Có phân biệt HOA thường ---vị trí đầu-----Kết quả tìm: Nếu tìm thấy trả về vị trí. Không tìm thấy trả về -1   ---------------------`)
+        console.log(Kq)
+        var Kq = Danh_sach.lastIndexOf(gtTim)
+        console.log(`-------Lưu ý: Có phân biệt HOA thường---vị trí cuối-----Kết quả tìm: Nếu tìm thấy trả về vị trí. Không tìm thấy trả về -1   ---------------------`)
+        console.log(Kq)
+        
+        // Lấy giá trị trong Danh sách
+        
+        var Chi_so = 2
+        var gTri = Danh_sach[Chi_so]
+        Danh_sach[Chi_so]=500;
+        console.log(`-------Lưu ý: Chi_so>=0 && Chi_so < Danh_sach.length  -----Lấy giá trị trong Danh sách tại vị trí: 2 ---------------------`)
+        console.log(gTri)
+        console.log(Danh_sach)
+        // Xuất 
+        
+        var Chuoi = Danh_sach.join(", ")
+        console.log(`------- Xuất Danh sách  ---------------------`)
+        console.log(Chuoi)
+        
+        // Duyệt Danh sách for
+        
+        console.log(`------- Duyệt Danh sách for  ---------------------`)
+        for (var i = 0; i < Danh_sach.length; i++) {
+            if(Danh_sach[i]%2!=0){
+                console.log(Danh_sach[i])
+            }
+            
+        }
+        
+        // Duyệt Danh sách forEach lấy giá trị
+        
+        
+        console.log(`------- Duyệt Danh sách forEach ES5 lấy giá trị  ---------------------`)
+        
+        Danh_sach.forEach(gt => {
+            console.log(gt)
+        })
+        
+        
+        // Duyệt Danh sách forEach lấy giá trị và chỉ mục
+         
+        console.log(`------- Duyệt Danh sách forEach ES5 lấy giá trị và chỉ mục ---------------------`)
+        Danh_sach.forEach((gt,index) => {
+            if (gt % 2 == 0) {
+                console.log(index) // Lấy chỉ mục
+            }
+
+        })
+        
+        // Tìm theo điều kiện: find
+        
+        var gtTim=4;
+        var result = Danh_sach.find(x => x > gtTim)
+        console.log(`------- Tìm theo điều kiện: find ---------------------`)
+        console.log(result)
+        if(result==undefined){
+            // Không tìm thấy
+            console.log(`Khong Tim thay ${result} `)
+        }else{
+            // Tim thay
+            console.log(`Tim thay ${result} `)
+        }
+        
+        
+        // Lọc theo điều kiện: filter
+        
+        var DsLoc=Danh_sach.filter(x=>x>=4 && x<=500)
+        console.log(`------- Lọc theo điều kiện: filter ---------------------`)
+        console.log(DsLoc)
+        if(DsLoc.length==0){
+            // Lọc không có kết quả
+            console.log(`Lọc không có kết quả`)
+        }else{
+           console.log(DsLoc) 
+        }
+        
+        
+    </script>
+
+</body>
+
+</html>

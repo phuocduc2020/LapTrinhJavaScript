@@ -1,0 +1,122 @@
+﻿// Xử lý lấy Ma_so
+        function Lay_Ma_so_cuoi() {
+            Nhom_Dien_thoai = Th_Nhom_Dien_thoai.value;
+            var Danh_sach_Ma_so = []
+            Danh_sach_Dien_thoai.forEach(Dien_thoai => {
+                if (Dien_thoai.Nhom_Dien_thoai.Ma_so == Nhom_Dien_thoai) {
+                    var Thanh_phan_con = Dien_thoai.Ma_so.trim().split("_")
+                    Danh_sach_Ma_so.push(parseInt(Thanh_phan_con[1]))
+                }
+            })
+
+            Danh_sach_Ma_so.sort(function (a, b) {
+                return a - b
+            })
+
+            //console.log(Danh_sach_Ma_so);
+
+            var Ma_so_Sau_cung = Danh_sach_Ma_so[Danh_sach_Ma_so.length - 1]
+            Ma_so_Sau_cung += 1
+            Th_Ma_so.value = Nhom_Dien_thoai + "_" + Ma_so_Sau_cung.toString()
+        }
+
+        // Xử lý Xem trước Media
+        function Xem_truoc_Media() {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                Th_Hinh_Xem_truoc.src = e.target.result;
+                console.log(e.target.result)
+            }
+            reader.readAsDataURL(Th_file.files[0]);
+        }
+
+function XL_Ghi_Them() {
+            var Kq = ""
+            var Ma_so = Th_Ma_so.value
+            var Ten = Th_Ten.value
+            var Don_gia_Nhap = Th_Don_gia_Nhap.value
+            var Don_gia_Ban = Th_Don_gia_Ban.value
+            var Nhom_Dien_thoai_Ten = Th_Nhom_Dien_thoai.value
+            var Nhom_Dien_thoai_Ma_so = Th_Nhom_Dien_thoai.value
+            var Dien_thoai = {
+                "Ten": Ten,
+                "Ma_so": Ma_so,
+                "Don_gia_Ban": parseInt(Don_gia_Ban),
+                "Don_gia_Nhap": parseInt(Don_gia_Nhap),
+                "Nhom_Dien_thoai": {
+                    "Ten": Nhom_Dien_thoai_Ten,
+                    "Ma_so": Nhom_Dien_thoai_Ma_so
+                }
+            }
+            // Thêm Điện thoại
+            var Dien_thoai = Ghi_Dien_thoai_Moi(Dien_thoai)
+            if (Dien_thoai) {
+                Danh_sach_Dien_thoai.push(Dien_thoai)
+                // Cập nhật Media
+                var reader = new FileReader()
+                var Chuoi_nhi_phan = ""
+                var Ten_Hinh = `${Ma_so}.png`
+                reader.onload = function (e) {
+                    Chuoi_nhi_phan = e.target.result;
+                    var Doi_tuong = { "Ten": Ten_Hinh, "Chuoi_nhi_phan": Chuoi_nhi_phan }
+                    Kq = Ghi_Media(Doi_tuong)
+                }
+                reader.readAsDataURL(Th_file.files[0])
+                return Kq
+            }
+
+        }
+==============================================================================================
+ // Chức năng Đồng ý MH_Them_Dien_thoai
+        Th_Dong_y.onclick = () => {
+            var Kq = XL_Ghi_Them()
+            if (Kq == "") {
+                Th_Thong_bao.innerHTML = "Thêm thành công Điện thoại mới";
+
+            }
+        }
+=================================================================================================
+DV_DU_LIEU.js
+
+else if (Ma_so_Xu_ly == "Ghi_Dien_thoai_Moi") {
+      var Kq = ""
+      var Dien_thoai = JSON.parse(Chuoi_Nhan)
+      Kq = Luu_tru.Ghi_moi_Doi_tuong("Dien_thoai", Dien_thoai)
+      if (Kq=="") {
+        Du_lieu.Danh_sach_Dien_thoai.push(Dien_thoai)
+        Chuoi_Kq = JSON.stringify(Dien_thoai)
+      }
+      Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+      Dap_ung.end(Chuoi_Kq);
+    }
+====================================  Media  ===============================================================
+
+Media
+
+XL_LUU_TRU.js
+class XL_LUU_TRU
+
+// Bổ sung 
+  Ghi_Nhi_phan_Media(Ten, Chuoi_nhi_phan) {
+    var Kq = "OK"
+    try {
+      var Nhi_phan = decodeBase64Image(Chuoi_nhi_phan);
+      var Duong_dan = Duong_dan_Thu_muc_Media + "//" + Ten
+      File.writeFileSync(Duong_dan, Nhi_phan.data);
+    } catch (Loi) {
+      Kq = Loi.toString()
+    }
+    return Kq
+  }
+========================================================================================================
+DV_MEDIA.js
+
+else if (Yeu_cau.method == "POST") {
+                var Hinh = JSON.parse(Chuoi_Nhan)
+                var Kq = Luu_tru.Ghi_Nhi_phan_Media(Hinh.Ten, Hinh.Chuoi_nhi_phan)
+                Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                Dap_ung.end(Kq);
+            }
+
+
+

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Them Dien Thoai</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      <!--The hien Cua hang-->
+      <div class="container-fluid">
+          <div id="Th_PET"></div>
+      </div>
+
+      <!--nut dong y, bo qua-->
+
+      <div class="container-fluid btn">
+          <div class="float-left">
+                <button class="btn btn-success" id="Th_dong_y">Dong y</button>
+                <button class="btn btn-danger" id="Th_bo_qua">Bo Qua</button>        
+          </div>
+      </div>
+
+      <!--The Hien thong bao-->
+      <div class="container-fluid">
+          <div class="btn btn-outline-danger btn-block" id="Th_Thong_bao">Them dien thoai moi</div>
+      </div>
+
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col" id="Th_Cha"></div>
+          </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script src="../Xu_ly/test_xu_ly_3L.js"></script>
+      <script>
+      var Cua_hang = Doc_du_lieu_cua_hang()
+      Xuat_du_lieu_cua_hang(Cua_hang, Th_PET)
+    var Danh_sach=Doc_danh_sach_dien_thoai()
+    Tao_the_hien_them(Th_Cha)
+    
+    Th_Nhom_dien_thoai.onchange()
+
+       function Lay_ma_so()
+       {
+           var Nhom_dien_thoai=Th_Nhom_dien_thoai.value;
+           var danh_sach_ma_so = []
+           Danh_sach.forEach(element => {
+               if(element.Nhom_Dien_thoai.Ma_so == Nhom_dien_thoai)
+               {
+                   var getMa_so = element.Ma_so.trim().split("_")
+                   danh_sach_ma_so.push(parseInt(getMa_so[1]))
+                  
+               }
+           });
+
+           danh_sach_ma_so.sort(function (a,b)
+           {
+               return a-b
+           })
+           var Lay_so_cuoi = danh_sach_ma_so[danh_sach_ma_so.length-1]
+           Th_Ma_so_DT.value=Nhom_dien_thoai + "_" + Lay_so_cuoi
+       }
+
+       function Xem_truoc_media()
+       {
+           var read = new FileReader()
+           read.onload=function (e){
+            Th_hinh_xem_truoc.src = e.target.result
+            console.log(e.target.result)
+           }
+           read.readAsDataURL(file_hinh.files[0])
+       }
+      </script>
+</body>
+</html>

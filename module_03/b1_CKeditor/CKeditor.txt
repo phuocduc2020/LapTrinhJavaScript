@@ -1,0 +1,31 @@
+﻿ứng dụng ckeditor// ckeditor.com
+* download thằng fullpackage.
+* vào add on của website-> chuyển sang skins. chọn office 2013 cho dễ-> download
+* nhúng script vào MH_Lien_he.html <script src="../ckeditor/ckeditor.js"></script>
+* nhúng 1 cái class="ckeditor" và buộc phải có 1 id
++ bỏ add on office mới down về. giải nén-> bỏ vào ckeditor/skins/ 
++ trong ckeditor có file config.js
+// config.language = 'fr';  //đổi ngôn ngữ
+// config.uiColor = '#AADC6E'; //đổi hình màu nền
+//config.skin='office2013'; // lấy tên của add on mới có
+
++ khi ấn đồng ý thì văn bản editor sẽ chuyển lên trang html bằng cách sử dụng sinh ra 1 sự kiện onclick
+Th_Dong_y.onclick=()={
+    var noi_dung= CKEDITOR.instances.Th_Noi_dung.getData();
+    Th_Xem_truoc.innerHTML=noi_dung;
+}
+
+--------------------------
+customize thanh công cụ ckeditor.
+vào folder sample của ckeditor->open index.html rồi thích cái nào thì tick cái đó rồi get toolbar config
+* tạo 1 file cũng dưới cấp của ckeditor, 'tool_contact.js' -> coppy paste nguyên đống đó vào. nhớ bỏ thêm config.skin='office2013';
+* nhúng CKEDITOR replace vào script:
+CKEDITOR.replace('Th_Noi_dung',{
+    customConfig:'tool_contact.js'
+});
+
+----------------------------
+ckeditor inline
+nhúng script
+<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
+dòng nào muốn sử dụng editor inline thì thêm thuộc tính <div contenteditable=true> </div> vào trong 1 thẻ nào đó

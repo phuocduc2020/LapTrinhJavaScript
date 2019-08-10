@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Danh Sách Điện Thoại</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <style>
+  .CHON{
+      background-color: silver;
+      opacity: 0.8;
+  }
+  </style>
+  <body>
+     
+      <div class="container-fluid">
+        <div id="Th_PET">
+
+        </div>
+      </div>
+
+      <div class="container-fluid">
+          <div class="col text-right text-primary m-3">
+            <img src="http://localhost:1001/PET.png" style="width:50px">Chào Mr Đức
+          </div>
+      </div>
+
+      <div class="container-fluid">
+          <div class="btn btn-outline-danger btn-block" id="Th_Thong_bao">
+            Tổng số sản phẩm
+          </div>
+      </div>
+
+      <div class="container-fluid">
+        <fieldset class="border m-2 p-2">
+            <legend class="text-danger">Danh Sách Điện Thoại</legend>
+            <button class="btn btn-info" id="Th_Home">Tất cả</button>
+            <button class="btn btn-info" id="Th_Android">Android</button>
+            <button class="btn btn-info" id="Th_Iphone">Iphone</button>
+            <button class="btn btn-danger" id="Th_Them" onclick="window.location=`MH_Them_Dien_thoai.html`">Thêm Điện Thoại</button>
+            <button class="btn btn-danger" id="Th_Sua" onclick="window.location=`MH_Sua_Dien_thoai.html`">Sửa Giá Điện Thoại</button>
+            <button class="btn btn-danger" id="Th_Xoa" onclick="window.location=`MH_Xoa_Dien_thoai.html`">Xóa Điện Thoại</button>
+            <hr> 
+            <div class="float-left">
+                Nhập Giá trị tìm:<input type="text" id="gtTim" onkeyup="KeyCode(event)">
+                <button class="btn btn-outline-primary" id="Th_Tim">
+                    <i class="fa fa-search-plus"></i>
+                </button>
+            </div>
+
+            <div class="text-right">
+                <select class="btn btn-outline-danger" id="Th_Sap_xep">
+                    <option value="0">--Sắp xếp theo--</option>
+                    <option value="1">Sắp xếp theo Tên (A->Z)</option>
+                    <option value="2">Sắp xếp theo Tên (Z->A)</option>
+                    <option value="3">Sắp xếp theo Giá (A->Z)</option>
+                    <option value="4">Sắp xếp theo Giá (Z->A)</option>
+                </select>
+                <select class="btn btn-outline-danger" id="Th_Loc_gia">
+                    <option value="0-50000000">--Chọn giá bán--</option>
+                    <option value="0-5000000">Dưới 5 triệu</option>
+                    <option value="5000000-10000000">Từ 5 đến 10 triệu</option>
+                    <option value="10000000-20000000">Từ 10 đến 20 triệu</option>
+                    <option value="20000000-50000000">trên 20 triệu</option>
+                </select>
+            </div>
+
+            </div>
+        </fieldset>
+      </div>
+      <div class="container-fluid">
+          <fieldset class="border m-2 p-2">
+              <legend>Danh Sách Điện Thoại</legend>
+              <div id="Th_Danh_sach"></div>
+          </fieldset>
+      </div>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+      <script src="../Xu_ly/test_xu_ly_3L.js"></script>
+      <script>
+          var Cua_hang = Doc_du_lieu_cua_hang()
+          Xuat_du_lieu_cua_hang(Cua_hang, Th_PET)
+          var Danh_sach_dien_thoai=Doc_danh_sach_dien_thoai() 
+        //  console.log(Danh_sach_dien_thoai)
+          Xuat_danh_sach_dien_thoai(Danh_sach_dien_thoai, Th_Danh_sach)
+         
+        Th_Home.onclick=()=>{
+            Xuat_danh_sach_dien_thoai(Danh_sach_dien_thoai,Th_Danh_sach)
+        }
+        Th_Android.onclick=()=>{
+            var dsAndroid=Danh_sach_dien_thoai.filter(x=>x.Nhom_Dien_thoai.Ma_so.toLowerCase()=="android")
+            Xuat_danh_sach_dien_thoai(dsAndroid,Th_Danh_sach)
+        }
+
+        Th_Iphone.onclick=()=>{
+            var dsIphone=Danh_sach_dien_thoai.filter(x=>x.Nhom_Dien_thoai.Ma_so.toLowerCase()=="iphone")
+            Xuat_danh_sach_dien_thoai(dsIphone,Th_Danh_sach)
+        }
+
+        function KeyCode(event)
+        {
+            if(event.keyCode==13)
+            {
+                var gtTim = event.target.value;
+                console.log(gtTim)
+                var Danh_sach_tim = Danh_sach_dien_thoai.filter(x=>x.Ten.toLowerCase().includes(gtTim.toLowerCase()))
+                Xuat_danh_sach_dien_thoai(Danh_sach_tim,Th_Danh_sach)
+            }
+        }
+        Th_Loc_gia.onchange=()=>{
+            var vt = Th_Loc_gia.value.split("-")
+            var danh_sach_loc = Danh_sach_dien_thoai.filter(x=>parseInt(vt[0])<=parseInt(x.Don_gia_Ban) && parseInt(vt[1])>=parseInt(x.Don_gia_Ban))
+            Xuat_danh_sach_dien_thoai(danh_sach_loc,Th_Danh_sach)
+        }
+
+        Th_Sap_xep.onchange=()=>{
+            var vt = Th_Sap_xep.value
+            switch(parseInt(vt))
+            {
+                case 1:
+                    Sap_xep_tang_dan_theo_ten()
+                    break;
+                case 2:
+                Sap_xep_giam_dan_theo_ten()
+                    break;
+                case 3:
+                Sap_xep_theo_gia_tang()
+                    break;
+                case 4:
+                Sap_xep_theo_gia_giam()
+                    break;
+            }
+        }
+
+
+        function Sap_xep_tang_dan_theo_ten()
+        {
+            //chuoi
+            Danh_sach_dien_thoai.sort((a,b)=>a.Nhom_Dien_thoai.Ten.toLowerCase().localeCompare(b.Nhom_Dien_thoai.Ten.toLowerCase()))
+            Xuat_danh_sach_dien_thoai(Danh_sach_dien_thoai,Th_Danh_sach)
+        }
+        function Sap_xep_giam_dan_theo_ten()
+        {
+            //chuoi
+            Danh_sach_dien_thoai.sort((a,b)=>b.Nhom_Dien_thoai.Ten.toLowerCase().localeCompare(a.Nhom_Dien_thoai.Ten.toLowerCase()))
+            Xuat_danh_sach_dien_thoai(Danh_sach_dien_thoai,Th_Danh_sach)
+        }
+
+        function Sap_xep_theo_gia_tang()
+        {
+            //so
+            Danh_sach_dien_thoai.sort((a,b)=>{
+                return parseInt(a.Don_gia_Ban) - parseInt(b.Don_gia_Ban) 
+            })
+            Xuat_danh_sach_dien_thoai(Danh_sach_dien_thoai,Th_Danh_sach)
+        }
+
+        function Sap_xep_theo_gia_giam()
+        {
+            //so
+            Danh_sach_dien_thoai.sort((a,b)=>{
+                return parseInt(b.Don_gia_Ban) - parseInt(a.Don_gia_Ban) 
+            })
+            Xuat_danh_sach_dien_thoai(Danh_sach_dien_thoai,Th_Danh_sach)
+        }
+      </script>
+</body>
+</html>

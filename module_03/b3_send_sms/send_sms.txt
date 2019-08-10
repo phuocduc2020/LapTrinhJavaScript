@@ -1,0 +1,58 @@
+﻿vao https://www.twilio.com/try-twilio để đăng kí 1 tài khoản
+user: ducnpg.........
+pass: H...t...@123456
+
+* cấu hình location
+vao ... -> programmable sms-> setting-> geo permissions-> click vietnam
+* learn & build
+choose -> get a number -> coppy number đó(mỹ)-> test thử
+
+* phone number: xin số mới
+-> verified caller IDs-> nhập số mới-> lấy otp từ số mới-> bắt trước lại
+
+------------------------
+
+code: chèn thêm nodemodule
+npm i twilio --s
+
+var twilio = require('twilio');
+class XL_goi_tin_nhan{
+    Goi_tin_nhan(so_dien_thoai,noi_dung){
+        var accountSid = 'ACbc42890e7e6a8dd649781ca6391540c4';  // SID của thằng twilio
+        var authToken = 'd0a45838f11bfd6bb1569924c40f4ec3';   // token .....
+        var client = new twilio(accountSid,authToken);
+        return client.messages.create({
+            body:noi_dung,
+            to: so_dien_thoai,
+            from: '+12013659680'
+        })
+    }
+}
+
+var Goi_tin_nhan = new XL_goi_tin_nhan()
+module.exports = Goi_tin_nhan
+
+DV_DU_Lieu thêm
+
+code:
+ else if (Ma_so_Xu_ly == "Khach_hang_Goi_SMS") {
+      Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+      Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+      Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+
+      var to = "+84338019200";
+      
+      var body = "gui thoi";
+      var KqPromise = Gui_tin_nhan.Goi_tin_nhan(to, body);
+      KqPromise.then(result => {
+        console.log(result);
+        Chuoi_Kq = "OK";
+        Dap_ung.end(Chuoi_Kq)
+      }).catch(error => {
+        console.log(error);
+        Chuoi_Kq = "ERROR";
+        Dap_ung.end(Chuoi_Kq);
+      })
+    } 
+

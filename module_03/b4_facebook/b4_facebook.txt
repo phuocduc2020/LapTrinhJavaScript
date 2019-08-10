@@ -1,0 +1,62 @@
+﻿Ứng dụng facebook
+tài khoản fb
+* tao fanpage
++ page_id
++ page_access_token
+
+cài thêm 1 nodejs để chay tren fb: npm i request-promise --s
+remember: npm i -y
+
+trong thư mục xử lý. Thêm 1 thư mục XL_facebook.js
+
+code:
+var request = require('request-promise');
+var page_id='';
+var page_access_token=''
+
+exports.Goi_thong_bao_facebook = async function (Noi_dung_Thong_bao){
+    var Cau_hinh={
+        method: 'POST',
+        uri:`http://graph.facebook.com/v4.0/${page_id}/feed`,
+        qs:{
+            access_token:page_access_token,
+            message:Noi_dung_Thong_bao
+        }
+    };
+    return request(Cau_hinh) //promise
+}
+
+
+cách lấy page_id, page_access_token
+vào fanpage-> right click view source-> tìm page_access_token
+
+DV_DU_Lieu.js
+code:
+else if (Ma_so_Xu_ly == "fb_thong_bao") {
+      
+      var Noi_dung_thong_bao = "Hello moi người"
+      var Kq_thong_bao=facebook.Goi_thong_bao_facebook(Noi_dung_thong_bao)
+      Kq_thong_bao.then(result => {
+        console.log(result);
+        Chuoi_Kq = "OK";
+        Dap_ung.end(Chuoi_Kq)
+      }).catch(error => {
+        console.log(error);
+        Chuoi_Kq = "ERROR";
+        Dap_ung.end(Chuoi_Kq);
+      })
+    } 
+
+để lấy thông tin kết quả id và gán nó 1 thẻ a href
+chạy debug cuối debug console sẽ có id. đây là 1 chuỗi, phải parse json để lấy đối tuong id
+và gán nào vào biến chuỗi_kq = 
+code:
+ Kq_thong_bao.then(result => {
+        let id=JSON.parse(result).id
+        Chuoi_Kq = `<a href="https://facebook.com/${id}" target="_new"> link message</a>`;
+        Dap_ung.end(Chuoi_Kq)
+      }).catch(error => {
+
+--------------------------------
+
+

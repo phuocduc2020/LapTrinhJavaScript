@@ -1,0 +1,42 @@
+download and install mongodb.com
+down type: server
+khi install khong stick install compass 
+
+dung cmd de khoi tao mongodb
+vao C:\Program Files\MongoDB\Server\4.0\bin 
+chay cmd -> >mongod --dbpath="duong_dan_luu_tru"
+
+Next step, download https://robomongo.org/
+-> download robo3t free
+
+Next step, su dung robo3t de create db tu mongodb dang chay. 
+
+
+///*****follow info below for importing and exporting data******//
+# Export to json
+
+mongoexport -d database_name -c collection_name -o outfile.json
+
+Ví dụ:
+mongoexport -d ql_sinh_vien -c khoa -o d:/Du_lieu_Mau/khoa.json
+
+-------------------------------------------------------------------------
+# Import  file json
+
+
+mongoimport -d database_name -c collection_name outfile.json
+
+Ví dụ
+
+mongoimport -d Ban_Dien_thoai -c Dien_thoai d:/Du_lieu_Mau/Dien_thoai.json 
+
+mongoimport -d Ban_Dien_thoai -c Dien_thoai d:/Du_lieu_Mau/Cua_hang.json 
+
+
+
+ket noi csdl 
+khoi tao package.json
+open terminal : npm init hay npm init -y 
+install node_module mongodb : npm i mongodb --s
+
+

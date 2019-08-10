@@ -1,0 +1,75 @@
+﻿// Ứng dụng Quản lý
+
+MH_Xoa_Dien_thoai.html
+
+/// Xoa
+var Danh_sach_Cap_nhat = []
+        Danh_sach_Chon = JSON.parse(sessionStorage.getItem("Danh_sach_Chon"))
+        Danh_sach_Chon.forEach(Dt => {
+            var Dien_thoai = Danh_sach_Dien_thoai.find(x => x.Ma_so == Dt)
+            Danh_sach_Cap_nhat.push(Dien_thoai)
+        })
+
+        //console.log(Danh_sach_Cap_nhat)
+        Tao_The_hien_Xoa(Th_Cha, Danh_sach_Cap_nhat)
+
+        function XL_Xoa_Dien_thoai() {
+            var Danh_sach_Cap_nhat = document.querySelectorAll(".CAP_NHAP")
+
+            var Danh_sach = []
+            Danh_sach_Cap_nhat.forEach(Dien_thoai => {
+
+                var Ma_so = Dien_thoai.getAttribute("Ma_so")
+                var Dien_thoai_Xoa = {
+                    "Ma_so": Ma_so,
+                }
+                Danh_sach.push(Dien_thoai_Xoa)
+            })
+
+            //console.log(Danh_sach)
+            // Ghi Xóa  Điện thoai
+            var Kq = Ghi_Xoa_Dien_thoai(Danh_sach)
+            return Kq
+
+        }
+
+        Th_Dong_y.onclick = () => {
+            var Kq = XL_Xoa_Dien_thoai()
+            //console.log(Kq)
+            if (Kq == "OK") {
+                Th_Thong_bao.innerHTML = "Xóa thành công Điện thoại";
+                sessionStorage.removeItem("Danh_sach_Chon")
+                
+                setTimeout(()=>{
+                    window.location=`MH_Danh_sach_Dien_thoai.html`
+                },2000)
+
+            }
+
+        }
+
+-------------------------------------------------------------------
+Dịch vụ Dữ liệu
+
+ else if (Ma_so_Xu_ly == "Xoa_Dien_thoai") {
+      var Kq = ""
+      var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
+      Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+      Danh_sach_Xoa.forEach(Dien_thoai_Xoa => {
+        var Dien_thoai = Du_lieu.Danh_sach_Dien_thoai.find(x => x.Ma_so == Dien_thoai_Xoa.Ma_so)
+        Kq = Luu_tru.Xoa_Doi_tuong("Dien_thoai", Dien_thoai)
+        if (Kq == "") {
+          Du_lieu.Danh_sach_Dien_thoai = Du_lieu.Danh_sach_Dien_thoai.filter(x => x.Ma_so != Dien_thoai_Xoa.Ma_so)
+          Chuoi_Kq = "OK"
+        } else {
+          Chuoi_Kq = "Error"
+        }
+        Dap_ung.end(Chuoi_Kq);
+      })
+
+
+    }
+
+
+
+

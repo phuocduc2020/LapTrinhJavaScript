@@ -1,0 +1,37 @@
+﻿dich vu du lieu sẽ kết nối với mongodb
+https://cloud.mongodb.com/v2/5d32f9dc9ccf649dda5c3845#security/database/roles
+user: ducnpgt60935@fpt.edu.vn
+pass: 28060104
+
+db access: user: ducnpgt60935
+pass: 28060104
+
+
+note:
+* Tạo 1 db vs collection tren cloud bằng cách chọn vào cluster->collection
+* Tạo 1 DB Access tạo MongoDB user
+* Edit lại Network Access ip: 0.0.0.0/0 để allow any, đỡ phải specify local ip nào đó
+* Để import db từ local lên cloud. clusters->command line tool-> mongoimport/export. chỉnh sửa lại
+ex: "mongoimport --host Cluster0-shard-0/cluster0-shard-00-00-kozkd.mongodb.net:27017,cluster0-shard-00-01-kozkd.mongodb.net:27017,cluster0-shard-00-02-kozkd.mongodb.net:27017 --ssl --username ducnpgt60935 --password 28060104 --authenticationDatabase admin --db Ban_Dien_thoai --collection Dien_thoai --type JSON --file C:\Users\Administrator\Desktop\Dien_thoai.json"
+* ket nối đến url csdl trên cloud: cluster->connect coppy sửa pass 
+vào folder mới tạo. run npm i mongodb --s để tạo ra package
+rồi bỏ edit lại url trong file "XL_KET_NOI_MONGODB.js" cho kết nối lên cloud 
+
+
+mission:
+tạo tài khoản heroku để up DV_du_lieu vs DV_xu_ly
+https://dashboard.heroku.com/apps
+user: ducnpgt60935@fpt.edu.vn
+pass: 28060104@abc
+
+note heroku:
+
+* create new app (cho 5 app maximum free). tạo ra 2 dv-dulieu vs dv-media
+- click vào 1 trong 2 dv:
++ open app (góc phải cùng): nơi sẽ publish app ra. lấy duong link đó ép vào code dv-dulieu http://....
++ Setting: focus 3 cái (heroku github(click add buildpack, chọn nodejs), domain, maintenace mode is off(off is run, on is offline link))
+
+
+--------
+nghiên cứu lại thằng DV_du_lieu.js bài b8_dv_mongodb
+khởi tạo thêm thằng index.html để nó chạy

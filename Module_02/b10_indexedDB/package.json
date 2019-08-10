@@ -1,0 +1,15 @@
+{
+  "name": "b10_indexedDB",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Xu_ly_IndexedDB.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "idb": "^2.1.3"
+  }
+}

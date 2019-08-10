@@ -1,0 +1,32 @@
+﻿Up DVDL lên heroku !!!!
+khởi động dvdulieu
+
+XL kết nối Monggodb 
+var _db = await MongoClient.connect(url,{useNewUrlParser: true})// thêm useNewUrlParser: true để tránh báo lỗi khi chạy debug
+
+
+* sử dụng lệnh nodejs: node ./Dich_vu?DV_DU_LIEU.js
+
+
+chiêu khác.
+vào file pakage.json
+đổi "test" thành "start": "node ./Dich_vu/DV_DU_lieu.js"
+vào terminal, gõ npm start hoặc nếu không thay đổi đường dẫn trong "start" thì mình chạy bằng cách đánh node ./Dich_vu/DV_DU_LIEU.js //2 cách này sẽ chạy cái đường dẫn
+
+* Thằng Dich vu đòi hỏi 4 quyền: get,put,post,delete
+thao tác
+đầu tiên vào DVDL frame thằng var port lại rồi nhúng thằng port thầy đưa và dán thêm 4 quyền buộc phải có sau yeucau.on('end',()=>{ dán 4 quyền vào khúc này...
+
+
+* vào heroku
+chon deploy tab
+download and install heroku cli vs git window
+
+vào dich vu du lieu -> terminal
+rồi follow step của heroku cli tren web
+1st: login: heroku login
+....
+sau khi thành công vào heroku web chọn setting. chọn đường dẫn
+success
+
+note: nhớ chạy lệnh npm init -y để tạo ra package.json trước khi push lên heroku

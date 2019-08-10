@@ -1,0 +1,72 @@
+﻿đầu tiên sử dụng lại bài XL_DV của bài heroku
+check lại xem chạy được trên localhost ko?
+
+* Tạo thêm 1 file XL_Goi_Thu_Dien_Tu.js trong Xu_ly
+code:
+var nodemailer = require('nodemailer');
+class XL_Goi_Thu_Dien_Tu{
+    Goi_Thu_Lien_he(from,to,subject,body){
+        var transporter = nodemailer.createTransport({
+            service:'gmail',
+            auth:{
+                user:``,
+                pass:``
+            }
+        });
+
+        var mailOptions = {
+            from:`cửa hàng bán điện thoại PET <${from}>`,
+            to:to,
+            subject:subject,
+            html:body
+        };
+        // Gọi phương thức sendMail -> Promise
+        return transporter.sendMail(mailOptions);
+    }
+}
+
+var Goi_thu = new XL_Goi_Thu_Dien_Tu()
+module.exports = Goi_thu;
+
+----------------------------------------------------
+
+* qua Thằng DV_Du_lieu.js
+thêm 1 else if nữa
+code:
+else if (Ma_so_Xu_ly == "Khach_hang_Lien_he") {
+      Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+      Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+      Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+
+      var from = "email gửi";
+      var to = "email nhận";
+      var subject = "Khách hàng Liên hệ";
+      var body = "<strong>Cho toi hoi siu nha</strong>";
+      var KqPromise = Goi_Thu.Goi_Thu_Lien_he(from, to, subject, body);
+      KqPromise.then(result => {
+        console.log(result);
+        Chuoi_Kq = "OK";
+        Dap_ung.end(Chuoi_Kq)
+      }).catch(error => {
+        console.log(error);
+        Chuoi_Kq = "ERROR";
+        Dap_ung.end(Chuoi_Kq);
+      })
+
+    }
+------------------------------------------------------------
+* vào terminal đánh lệnh để cài nodemailer
+bắt đầu gồm những lệnh node
+npm init -y
+npm i mongodb --s
+npm i nodemailer --s
+
+rồi run xem nó chạy được ko?
+
+
+Thầy có thêm 2 file để hỗ trợ MH_Lien_he.html có thể gửi mail đi được
+
+https://accounts.google.com/DisplayUnlockCaptcha
+
+
